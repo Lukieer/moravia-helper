@@ -1,3 +1,16 @@
+// ==UserScript==
+// @name         Moravia Helper
+// @namespace    https://mskarbek.pl
+// @source       https://github.com/Lukieer/moravia-helper
+// @downloadURL  https://raw.githubusercontent.com/Lukieer/moravia-helper/main/moravia-helper.js
+// @updateURL    https://raw.githubusercontent.com/Lukieer/moravia-helper/main/moravia-helper.js
+// @version      2.0
+// @description  Easy prepare links for projects
+// @author       Maciej Skarbek
+// @match        https://projects.moravia.com/task/*
+// @grant        none
+
+// ==/UserScript==
 (function () {
     'use strict';
 
