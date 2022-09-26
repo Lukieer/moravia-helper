@@ -4,7 +4,7 @@
 // @source       https://github.com/Lukieer/moravia-helper
 // @downloadURL  https://raw.githubusercontent.com/Lukieer/moravia-helper/main/moravia-helper.js
 // @updateURL    https://raw.githubusercontent.com/Lukieer/moravia-helper/main/moravia-helper.js
-// @version      2.0
+// @version      2.1
 // @description  Easy prepare links for projects
 // @author       Maciej Skarbek
 // @match        https://projects.moravia.com/task/*
@@ -32,7 +32,7 @@
         text-align: center;
      }
      .mh-title {
-       
+
         margin-bottom: 10px;
      }
      #mh-showlink
@@ -99,7 +99,7 @@
         <img src="https://www.kindpng.com/picc/b/122-1226306_green-check-png.png"><br />
         <small class="title" id="mh-progress">Ukończono operacje!</small>
         `);
-        
+
         window.open(emtra, '_blank');
 
     });
@@ -109,21 +109,32 @@
 
     const interval = setInterval(function()
     {
-        rows = $(".grid-body .grid-inner .grid-body .grid-row");
 
-        if(rows.length > 0){
+
+        rows = $($(".grid-inner")[$(".grid-inner").length - 1]);
+
+
+
+        if(rows.length == 1){
             $("#moravia-helper").css("background-color", "");
             clearInterval(interval);
 
             $("#mh-progrss").html("Wykryto tabele, sprawdzanie poprawności nazw");
 
+
+
             rows.each(function(i){
 
-                row = $(rows[i]);
-                name = $($(row.children()[2]).children()[0]).html();
 
-                if(name.length > 0)
+                row = $(rows[i])[0];
+
+                name = $($($($($($(row).children()[1]).children()[0])).children()[2]).children()[0]).html();
+console.log(name);
+                if(true)
                 {
+
+
+
                     $("#mh-progrss").html("Przygotowywanie linków...");
 
                     id = name.match(/(?<=\]\[)(.*)(?=\])/gm)[0];
@@ -134,7 +145,7 @@
                         setTimeout(function(){
                             $("#mh-showlink").css("opacity", "1");
                         },200);
-                        
+
                         name = name.split("#").pop();
                         nid = name.split("_")[0];
                         name = name.split("_").pop();
@@ -187,22 +198,22 @@
                     fifth_row = third_row + 0.1 * fourth_row;
                 }
             });
-            if(fifth_row == "-") 
+            if(fifth_row == "-")
             {
                 emtra_name +=  "both";
-                pay = third_row; 
+                pay = third_row;
             } else {
                 emtra_name += "including101_both";
                 pay = fifth_row;
             }
-            emtra = "https://www.emtra.pl/admin/jobcreate.php?id=501&task_id=0&reset=1&symfonie=" + 
+            emtra = "https://www.emtra.pl/admin/jobcreate.php?id=501&task_id=0&reset=1&symfonie=" +
             encodeURIComponent
             (
                 "{\"job_name\":\""+emtra_name+"\",\"lus\":\""+pay+"\",\"comments\":\""+rawlinks+"\", \"deadline\": \""+deadline+"\"}"
             );
         }
-    }, 100);
-        
-        
+    }, 3000);
+
+
 
 })();
