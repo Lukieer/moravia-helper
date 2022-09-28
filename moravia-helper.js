@@ -4,7 +4,7 @@
 // @source       https://github.com/Lukieer/moravia-helper
 // @downloadURL  https://raw.githubusercontent.com/Lukieer/moravia-helper/main/moravia-helper.js
 // @updateURL    https://raw.githubusercontent.com/Lukieer/moravia-helper/main/moravia-helper.js
-// @version      2.1
+// @version      2.2
 // @description  Easy prepare links for projects
 // @author       Maciej Skarbek
 // @match        https://projects.moravia.com/task/*
@@ -121,15 +121,18 @@
 
             $("#mh-progrss").html("Wykryto tabele, sprawdzanie poprawności nazw");
 
+            rows = $(rows.children()[1]).children();
 
 
             rows.each(function(i){
 
 
-                row = $(rows[i])[0];
+                row = $(rows[i]);
 
-                name = $($($($($($(row).children()[1]).children()[0])).children()[2]).children()[0]).html();
-console.log(name);
+
+
+                name = $($(row.children()[2]).children()[0]).html();
+
                 if(true)
                 {
 
